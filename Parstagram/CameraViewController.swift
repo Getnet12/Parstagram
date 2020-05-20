@@ -19,7 +19,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        imageView.becomeFirstResponder()
+//   imageView.becomeFirstResponder()
     }
     @IBAction func onSubmitButton(_ sender: Any) {
         let post = PFObject(className: "Posts")

@@ -14,22 +14,40 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Instagram_launch_screen_December_2019" translatesAutoresizingMaskIntoConstraints="NO" id="7S9-Ta-D9n">
-                                <rect key="frame" x="0.0" y="0.0" width="415" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="-113" y="109"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9V3-Jb-b9g">
+            <objects>
+                <viewController id="Cvv-aM-Imi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="noa-Hy-lgx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="Sk5-bU-tGl">
+                                <rect key="frame" x="177" y="418" width="60" height="60"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Sk5-bU-tGl" firstAttribute="centerX" secondItem="noa-Hy-lgx" secondAttribute="centerX" id="0EL-zr-0Pb"/>
+                            <constraint firstItem="Sk5-bU-tGl" firstAttribute="centerY" secondItem="noa-Hy-lgx" secondAttribute="centerY" id="1GI-vY-t1F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7mv-CA-OcX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="knp-k4-1QO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="629" y="108"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Instagram_launch_screen_December_2019" width="415" height="900"/>
+        <image name="Icon-60" width="60" height="60"/>
     </resources>
 </document>
