@@ -36,8 +36,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func onSignUp(_ sender: Any) {
         let user = PFUser()
-        user.username = usernameField.text!
-        user.password = passwordField.text!
+        user.username = usernameField.text!// allows the user to type username
+        user.password = passwordField.text!//password
 
         user.signUpInBackground { (success, error) in
             if success {

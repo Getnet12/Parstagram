@@ -16,6 +16,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     var posts = [PFObject]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +33,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.includeKey("author")
         
         query.limit = 20
-        
+        query.addDescendingOrder("createdAt");
         query.findObjectsInBackground { (posts, error) in
             if posts != nil{
                 self.posts = posts!
@@ -63,6 +64,24 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(url)
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.section]
+        let comment = PFObject(className: "Comments")
+        comment["text"] = "This is a random comment"
+        comment["text"] = post
+        comment["author"] = PFUser.current()!
+        
+        post.add(comment, forKey: "comments")
+        post.saveInBackground{(sucess, error) in
+            if sucess {
+                print("Comment saved")
+            
+            }else{
+                print("Error saving commnet")
+            }
+        }
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -73,4 +92,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
 
+    @IBAction func onLogoutButton(_ sender: Any) {
+        PFUser.logOutInBackground(block: { (error) in
+            if let error = error{
+                
+                print(error.localizedDescription)
+                
+            }
+            else{
+                print("sucessful logout")}
+       })
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = main.instantiateViewController(withIdentifier: "LoginviewController")
+//            let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+//            sceneDelegate.window?.rootViewController = loginViewController
+        let seceneDelegate = UIApplicationDelegate.self as! SceneDelegate
+        seceneDelegate.window?.rootViewController = loginViewController
+        }
 }
