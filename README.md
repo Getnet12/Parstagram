@@ -8,8 +8,8 @@ Time spent: **3.5** hours spent in total
 
 The following **required** functionality is completed:
 
-- [x] User stays logged in across restarts. (1pt)
-- [ ] User can log out. (1pt) // at a point it was logging out but then i couldn't figure the problem out 
+- [x] User stays logged in across restarts. (1pt) it doesn't show the posted picture or comments but it stayed logged in
+- [ ] User can log out. (1pt) at a point it was logging out but then i couldn't figure the problem out 
 
 ## Video Walkthrough
 
