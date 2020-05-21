@@ -11,6 +11,12 @@ The following **required** functionality is completed:
 - [x] User stays logged in across restarts. (1pt)
 - [ ] User can log out. (1pt) // at a point it was logging out but then i couldn't figure the problem out 
 
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://g.recordit.co/KtBDU9e0ig.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 # Parstagram - Part I
 
 This is an Instagram clone with a custom Parse backend that allows a user to post photos and view a global photos feed.
