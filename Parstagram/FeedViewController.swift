@@ -30,7 +30,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidAppear(animated)
         
         let query = PFQuery(className: "Posts")
-        query.includeKey("author")
+        query.includeKeys(["author", "comments", "comments.author"])
         
         query.limit = 20
         query.addDescendingOrder("createdAt");
@@ -43,26 +43,44 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let post = posts[section]
+        // ?? if the comments section is nil takes as default value[]
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        return comments.count + 1
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let post = posts[indexPath.section]
+        let comments = (post["comments"] as? [PFObject]) ?? []
         
+        if indexPath.row  == 0 {
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell")  as! PostCell
-        
-        let post = posts[indexPath.row]
         
         let user = post["author"] as! PFUser
         cell.usernameLabel.text = user.username
-        cell.captionLabel.text = post["caption"] as! String?
+        cell.captionLabel.text = (post["caption"] as! String)
         
         let imageFile = post["image"] as!  PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
     
-
         cell.photoView.af_setImage(withURL: url)
-        print(url)
+        //print(url)
+    
         return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CemmentCell") as! CommentCell
+            let comment = comments[indexPath.row - 1 ]
+            cell.commentLabel.text = comment["text"] as! String
+
+            let user = comment["author"] as! PFUser
+            cell.nameLabel.text = user.username
+            return cell
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.section]
@@ -97,16 +115,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let error = error{
                 
                 print(error.localizedDescription)
-                
             }
             else{
-                print("sucessful logout")}
+                print("sucessful")}
        })
             let main = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController = main.instantiateViewController(withIdentifier: "LoginviewController")
-//            let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-//            sceneDelegate.window?.rootViewController = loginViewController
-        let seceneDelegate = UIApplicationDelegate.self as! SceneDelegate
-        seceneDelegate.window?.rootViewController = loginViewController
+            let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+            sceneDelegate.window?.rootViewController = loginViewController
+      
         }
 }
