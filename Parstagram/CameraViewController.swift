@@ -64,7 +64,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let image = info[.editedImage] as! UIImage
         
         //resizing the image since Huroku doesn't allow larger byte
-        let size = CGSize(width: 400, height: 400)
+        let size = CGSize(width: 300, height: 300)
         let scaledImage = image.af.imageScaled(to: size)
         imageView.image = scaledImage
         
