@@ -47,6 +47,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func onCameraButton(_ sender: UITapGestureRecognizer) {
+        print(PFUser.current())
         let picker = UIImagePickerController()
         // call me after the users pick the picture
         picker.delegate = self
@@ -58,6 +59,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             picker.sourceType = .photoLibrary
         }
         present(picker, animated: true, completion: nil)
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
