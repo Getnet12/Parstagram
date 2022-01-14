@@ -9,8 +9,6 @@ import UIKit
 import AlamofireImage
 import Parse
 
-
-
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var imageView: UIImageView!
@@ -47,7 +45,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func onCameraButton(_ sender: UITapGestureRecognizer) {
-        print(PFUser.current())
+        //print(PFUser.current())
         let picker = UIImagePickerController()
         // call me after the users pick the picture
         picker.delegate = self
