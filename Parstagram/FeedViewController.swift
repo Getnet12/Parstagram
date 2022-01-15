@@ -40,13 +40,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let query = PFQuery(className:"Posts")
         query.includeKeys(["author", "comments", "comments.author"])
         query.limit = 20
-       
+//        query.skip = 3
         
         query.findObjectsInBackground{ (posts, error) in
             if posts != nil{
                 self.posts = posts!
                 self.tableView.reloadData()
-                query.skip = 4
             }
         }
     }
