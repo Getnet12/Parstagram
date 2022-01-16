@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
+        // to stay logged in
         guard let _ = (scene as? UIWindowScene) else { return }
         if PFUser.current() != nil {
             let main = UIStoryboard(name: "Main", bundle: nil)

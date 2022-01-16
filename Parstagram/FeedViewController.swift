@@ -38,24 +38,29 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidAppear(animated)
         
         let query = PFQuery(className:"Posts")
+        //author and comments to get the comment and the author
+        // comments.author to get the related author or the owner of the comment 
         query.includeKeys(["author", "comments", "comments.author"])
         query.limit = 20
-//        query.skip = 3
+//        query.skip = 2
         
         query.findObjectsInBackground{ (posts, error) in
+//            print(query)
             if posts != nil{
                 self.posts = posts!
+                print(self.posts)
                 self.tableView.reloadData()
+            
             }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+//
         let post = posts[section]
         let comments = (post["comments"] as? [PFObject]) ?? []
         
-        return comments.count + 2
+        return comments.count + 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,47 +68,52 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = posts[indexPath.row]
+        let post = posts[indexPath.section]
         let comments = (post["comments"] as? [PFObject]) ?? []
-        
-        if indexPath.section == 0 {
+
+        //if it's the first row it's going to the post cell
+       if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
             let user = post["author"] as! PFUser
             
             cell.usernameLabel.text = user.username
-            //took the suggestion 
-            cell.captionLabel.text = post["caption"] as? String
-            
+            cell.captionLabel.text = post["caption"] as! String
             let imageFile = post["image"] as! PFFileObject
             let urlString = imageFile.url!
             let url = URL(string: urlString)!
-            cell.photoView.af_setImage(withURL: url)
-            
+            cell.photoView.af.setImage(withURL: url)
+
             return cell
-            
-        }else if indexPath.row <= comments.count {
+
+       }else {
+//        else if indexPath.row <= comments.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
             //to get the first comment in the post
             let comment = comments[indexPath.row - 1]
-            
             cell.commentLabel.text = comment["text"] as? String
-            
+
             let user = comment["author"] as! PFUser
             cell.nameLabel.text = user.username
+           
             return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell")!
             
-            return cell
+        //else{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell")!
+//
+//            return cell
         }
-        
+
     }
     
+    
+    // Creating fake comments
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.row]
         let comment = PFObject(className: "Comments")
         comment["text"] = "This is a random comment"
+        //the comment is attached to this specfic post or which post is this comment belongs to
         comment["comment"] = post
+        //who made this comment
         comment["author"] = PFUser.current()!
         post.add(comment, forKey: "comments")
         post.saveInBackground{ (success, error) in
