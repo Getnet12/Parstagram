@@ -174,21 +174,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Getnet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmV-9L-tKp">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getnet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmV-9L-tKp">
                                             <rect key="frame" x="16" y="8" width="55.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is the comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vF-OR-sXA">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vF-OR-sXA">
                                             <rect key="frame" x="79.5" y="8" width="154" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2vF-OR-sXA" secondAttribute="bottom" constant="8" id="Ggd-Tr-ybe"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WmV-9L-tKp" secondAttribute="bottom" constant="8" id="T4k-nI-bEq"/>
+                                        <constraint firstItem="2vF-OR-sXA" firstAttribute="top" secondItem="Amq-B3-zyK" secondAttribute="top" constant="8" id="ThA-Sj-XTo"/>
+                                        <constraint firstItem="2vF-OR-sXA" firstAttribute="leading" secondItem="WmV-9L-tKp" secondAttribute="trailing" constant="8" id="W03-zR-xUs"/>
+                                        <constraint firstItem="WmV-9L-tKp" firstAttribute="top" secondItem="Amq-B3-zyK" secondAttribute="top" constant="8" id="joN-RQ-h3e"/>
+                                        <constraint firstItem="WmV-9L-tKp" firstAttribute="leading" secondItem="Amq-B3-zyK" secondAttribute="leading" constant="16" id="ofu-Ub-pR8"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2vF-OR-sXA" secondAttribute="trailing" constant="8" id="pCr-XU-Y5U"/>
+                                        <constraint firstItem="2vF-OR-sXA" firstAttribute="leading" secondItem="WmV-9L-tKp" secondAttribute="trailing" constant="8" id="vTD-jG-5pA"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="commentLabel" destination="2vF-OR-sXA" id="UMf-z0-LLr"/>
@@ -205,7 +213,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a comment..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwv-cy-Xhi">
                                             <rect key="frame" x="16" y="8" width="390" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
